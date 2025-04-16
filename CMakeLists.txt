@@ -3,4 +3,4 @@ project(firstShell)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(firstShell main.cpp)
+add_executable(firstShell myShell.cpp)

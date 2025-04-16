@@ -143,57 +143,6 @@ int main() {
             // WEXITSTATUS(status) gives the actual return code from the child process
         }
     }
-    else if (commands[2] == NULL) {
-        // begin pipelining
-
-        /*
-         * - Pipe is made before forking
-         * - After forking, child 1 redirects output to child 2
-         * - 1 redirects stdout to pipe write-end
-         * - 2 redirects stdin to pipe read-end
-         */
-
-        int pipefd[2];
-        if (pipe(pipefd) < 0) {
-            perror("failed to create pipe");
-            exit(1);
-        }
-
-        pid_t pid1 = fork();
-        if (pid1 == 0) {
-            // child 1 redirects stdout to write end
-            dup2(pipefd[1], STDOUT_FILENO);
-            close(pipefd[0]);
-            close(pipefd[1]);
-            execvp(args1[0], args1);
-            perror("failed to exec");
-            exit(1);
-        }
-
-        pid_t pid2 = fork();
-        if (pid2 == 0) {
-            // child 2 redirects stdin to read end
-            dup2(pipefd[0], STDIN_FILENO);
-            close(pipefd[1]);
-            close(pipefd[0]);
-            execvp(args2[0], args2);
-            perror("failed to exec");
-            exit(1);
-        }
-
-        close(pipefd[0]);
-        close(pipefd[1]);
-
-        int status;
-        waitpid(pid1, &status, 0); // prevents zombie process
-        cout << "child process " << pid1 << "exited with status " << WEXITSTATUS(status) << endl;
-        // WEXITSTATUS(status) gives the actual return code from the child process
-
-        waitpid(pid2, &status, 0);
-        cout << "child process " << pid2 << "exited with status " << WEXITSTATUS(status) << endl;
-        // WEXITSTATUS(status) gives the actual return code from the child process
-
-    }
 
     else {
         execute_pipeline(commands, 10);
