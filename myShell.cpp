@@ -140,7 +140,7 @@ int main() {
                 // this is the parent process's action
                 int status;
                 waitpid(pid, &status, 0); // prevents zombie process
-                cout << "process " << pid << "exits with exit status value " << WEXITSTATUS(status) << endl;
+                cout << "process " << pid << " exits with exit status value " << WEXITSTATUS(status) << endl;
                 // WEXITSTATUS(status) gives the actual return code from the process
             }
         }
