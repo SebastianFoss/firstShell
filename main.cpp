@@ -28,6 +28,67 @@ void tokenize_command(char* command, char tokens[20][20], char* args[21]) {
     }
     args[tokenCount] = NULL; // NULL terminate for execvp
 }
+void execute_pipeline(char* commands[], int num_commands) {
+    char tokenMaster[10][20][20]; // up to 10 commands, each with 20 tokens max
+    char* args[10][21]; // execvp args per command
+    int pipefd[9][2]; // at most 9 pipes for 10 commands
+    pid_t pids[10];
+
+    // tokenizes each command into args
+    for (int i = 0; i < num_commands; ++i) {
+        tokenize_command(commands[i], tokenMaster[i], args[i]);
+    }
+
+    // creates pipes for each
+    for (int i = 0; i < num_commands - 1; ++i) {
+        if (pipe(pipefd[i]) < 0) {
+            perror("failed to create pipe");
+            exit(1);
+        }
+    }
+
+    // forks each command
+    for (int i = 0; i < num_commands; ++i) {
+        pids[i] = fork();
+        if (pids[i] < 0) {
+            perror("failed to fork");
+            exit(1);
+        }
+        else if (pids[i] == 0) {
+            // redirects stdin if not first command
+            if (i > 0) {
+                dup2(pipefd[i - 1][0], STDIN_FILENO);
+            }
+            // redirects stdout if not last command
+            if (i < num_commands - 1) {
+                dup2(pipefd[i][1], STDOUT_FILENO);
+            }
+
+            // then closes all pipe ends
+            for (int j = 0; j < num_commands - 1; ++j) {
+                close(pipefd[j][0]);
+                close(pipefd[j][1]);
+            }
+
+            execvp(args[i][0], args[i]);
+            perror("failed to exec command");
+            exit(1);
+        }
+    }
+
+    // parent closes all pipes
+    for (int i = 0; i < num_commands - 1; ++i) {
+        close(pipefd[i][0]);
+        close(pipefd[i][1]);
+    }
+
+    // waits for all children to avoid zombie processes *zombie noise*
+    int status;
+    for (int i = 0; i < num_commands; ++i) {
+        waitpid(pids[i], &status, 0);
+        cout << "child process " << pids[i] << " exited with status " << WEXITSTATUS(status) << endl;
+    }
+}
 
 int main() {
 
@@ -38,7 +99,7 @@ int main() {
 
         getline(cin, line);
 
-        string trimmed = line; //
+        string trimmed = line; // idea for removing whitespace but not expanded for time reasons
         trimmed.erase(remove_if(trimmed.begin(), trimmed.end(), ::isspace), trimmed.end());
 
         if (line.empty()) {
@@ -83,20 +144,6 @@ int main() {
         }
     }
     else if (commands[2] == NULL) {
-        // runs for 3 and on
-        char tokenMaster[10][20][20]; // this is really cool, praying it'll work
-        char* args[10][21];
-        for (int i = 1; i < 10; i++) {
-            commands[i] = strtok(NULL, "|");
-            tokenize_command(input, tokenMaster[i], args[i]);
-
-
-        }
-
-        int pipefd[9][2];
-
-
-
         // begin pipelining
 
         /*
@@ -146,6 +193,10 @@ int main() {
         cout << "child process " << pid2 << "exited with status " << WEXITSTATUS(status) << endl;
         // WEXITSTATUS(status) gives the actual return code from the child process
 
+    }
+
+    else {
+        execute_pipeline(commands, 10);
     }
 
     return 0;

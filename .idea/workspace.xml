@@ -29,7 +29,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27acdaa7-2ab4-462b-b44a-66a700fecc83" name="Changes" comment="Full implementation of 2 command support.">
+    <list default="true" id="27acdaa7-2ab4-462b-b44a-66a700fecc83" name="Changes" comment="Partial implementation of 3+ commands.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +100,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744688810340</updated>
       <workItem from="1744688811418" duration="1244000" />
-      <workItem from="1744771719339" duration="6167000" />
+      <workItem from="1744771719339" duration="6774000" />
     </task>
     <task id="LOCAL-00001" summary="Added the initial input system and c string system. Partially complete.">
       <option name="closed" value="true" />
@@ -133,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744777592935</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Partial implementation of 3+ commands.">
+      <option name="closed" value="true" />
+      <created>1744778191135</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1744778191135</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +164,7 @@
     <MESSAGE value="Finished the code for a single command. &#10;Fork, execvp, and wait are used.&#10;Included necessary header files." />
     <MESSAGE value="Partial refactoring of tokenization into a function. May convert ultimately into some sort of loop to continously accept pipelines." />
     <MESSAGE value="Full implementation of 2 command support." />
-    <option name="LAST_COMMIT_MESSAGE" value="Full implementation of 2 command support." />
+    <MESSAGE value="Partial implementation of 3+ commands." />
+    <option name="LAST_COMMIT_MESSAGE" value="Partial implementation of 3+ commands." />
   </component>
 </project>
