@@ -54,6 +54,7 @@ int main() {
     char* cmd1 = strtok(input, "|"); // for when there are multiple commands for pipelining
     char* cmd2 = strtok(NULL, "|"); // second command
 
+    char* commands[10];
 
     if (cmd2 == NULL) {
         // runs for single command
@@ -81,12 +82,20 @@ int main() {
             // WEXITSTATUS(status) gives the actual return code from the child process
         }
     }
-    else {
-        // runs for both
-        char tokens1[20][20], tokens2[20][20];
-        char* args1[21], *args2[21];
-        tokenize_command(input, tokens1, args1);
-        tokenize_command(input, tokens2, args2);
+    else if (commands[2] == NULL) {
+        // runs for 3 and on
+        char tokenMaster[10][20][20]; // this is really cool, praying it'll work
+        char* args[10][21];
+        for (int i = 1; i < 10; i++) {
+            commands[i] = strtok(NULL, "|");
+            tokenize_command(input, tokenMaster[i], args[i]);
+
+
+        }
+
+        int pipefd[9][2];
+
+
 
         // begin pipelining
 
