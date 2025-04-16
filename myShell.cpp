@@ -148,7 +148,5 @@ int main() {
         else {
             execute_pipeline(commands, 10); // for multiple commands
         }
-
-        return 0;
     }
 }

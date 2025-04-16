@@ -29,9 +29,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27acdaa7-2ab4-462b-b44a-66a700fecc83" name="Changes" comment="Fixed error. Exit closes the shell.">
+    <list default="true" id="27acdaa7-2ab4-462b-b44a-66a700fecc83" name="Changes" comment="Fixed multiple errors. Final final commit?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myShell.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/myShell.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +106,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744688810340</updated>
       <workItem from="1744688811418" duration="1244000" />
-      <workItem from="1744771719339" duration="10433000" />
+      <workItem from="1744771719339" duration="10951000" />
     </task>
     <task id="LOCAL-00001" summary="Added the initial input system and c string system. Partially complete.">
       <option name="closed" value="true" />
@@ -181,7 +180,23 @@
       <option name="project" value="LOCAL" />
       <updated>1744781473158</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fixed multiple errors. Final final commit?">
+      <option name="closed" value="true" />
+      <created>1744782375886</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1744782375886</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Fixed multiple errors. Final final commit?">
+      <option name="closed" value="true" />
+      <created>1744782448069</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1744782448069</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +223,7 @@
     <MESSAGE value="Removed redundant 2 command code, since it had errors." />
     <MESSAGE value="Final commit?" />
     <MESSAGE value="Fixed error. Exit closes the shell." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed error. Exit closes the shell." />
+    <MESSAGE value="Fixed multiple errors. Final final commit?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed multiple errors. Final final commit?" />
   </component>
 </project>
