@@ -96,32 +96,29 @@ void execute_pipeline(char* commands[], int num_commands) {
 int main() {
     while (true) {
         string line;
+        cout << "myshell$" << flush;
 
-        bool isEmpty = false;
-        while (!isEmpty) {
-            cout << "myshell$" << flush; // display myshell
+        getline(cin, line);
+        if (line.empty()) continue;
+        if (line == "exit") break; // ends if user says exit
 
-            getline(cin, line);
-
-            string trimmed = line; // idea for removing whitespace but not expanded for time reasons
-            trimmed.erase(remove_if(trimmed.begin(), trimmed.end(), ::isspace), trimmed.end());
-
-            if (line.empty()) {
-                isEmpty = true;
-            }
-            else if (line == "exit") {
-                break;
-            }
-        }
-
+        // Splits into commands using '|'
+        char* commands[10];
+        int num_commands = 0;
 
         char input[500]; // char for the input characters
         strncpy(input, line.c_str(), 499); // copies the string into the char array
         input[499] = '\0';
 
-        char* commands[10];
+        char* token = strtok(input, "|");
+        while (token != NULL && num_commands < 10) {
+            // Trim leading spaces
+            while (*token == ' ') token++;
+            commands[num_commands++] = token;
+            token = strtok(NULL, "|");
+        }
 
-        if (commands[1] == NULL) {
+        if (num_commands==1) {
             // runs for single command
 
             char tokens[20][20]; // 2d array allocating 20 tokens
@@ -149,7 +146,7 @@ int main() {
         }
 
         else {
-            execute_pipeline(commands, 10);
+            execute_pipeline(commands, 10); // for multiple commands
         }
 
         return 0;
