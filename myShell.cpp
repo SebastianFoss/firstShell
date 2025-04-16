@@ -16,6 +16,7 @@
 
 using namespace std;
 
+// used to tokenize commands
 void tokenize_command(char* command, char tokens[20][20], char* args[21]) {
     int tokenCount = 0;
     char* token = strtok(command, " ");
@@ -28,6 +29,8 @@ void tokenize_command(char* command, char tokens[20][20], char* args[21]) {
     }
     args[tokenCount] = NULL; // NULL terminate for execvp
 }
+
+// used to execute pipelines
 void execute_pipeline(char* commands[], int num_commands) {
     char tokenMaster[10][20][20]; // up to 10 commands, each with 20 tokens max
     char* args[10][21]; // execvp args per command
@@ -86,67 +89,68 @@ void execute_pipeline(char* commands[], int num_commands) {
     int status;
     for (int i = 0; i < num_commands; ++i) {
         waitpid(pids[i], &status, 0);
-        cout << "child process " << pids[i] << " exited with status " << WEXITSTATUS(status) << endl;
+        cout << "child process " << pids[i] << " exits with exit status value " << WEXITSTATUS(status) << endl;
     }
 }
 
 int main() {
-
-    string line;
-    bool isEmpty = false;
-    while (!isEmpty) {
-        cout << "myshell$" << flush; // display myshell
-
-        getline(cin, line);
-
-        string trimmed = line; // idea for removing whitespace but not expanded for time reasons
-        trimmed.erase(remove_if(trimmed.begin(), trimmed.end(), ::isspace), trimmed.end());
-
-        if (line.empty()) {
-            isEmpty = true;
+    while (true) {
+        string line;
+        if (line == "exit") {
+            break;
         }
-    }
+        bool isEmpty = false;
+        while (!isEmpty) {
+            cout << "myshell$" << flush; // display myshell
 
+            getline(cin, line);
 
-    char input[500]; // char for the input characters
-    strncpy(input, line.c_str(), 499); // copies the string into the char array
-    input[499] = '\0';
+            string trimmed = line; // idea for removing whitespace but not expanded for time reasons
+            trimmed.erase(remove_if(trimmed.begin(), trimmed.end(), ::isspace), trimmed.end());
 
-    char* cmd1 = strtok(input, "|"); // for when there are multiple commands for pipelining
-    char* cmd2 = strtok(NULL, "|"); // second command
-
-    char* commands[10];
-
-    if (cmd2 == NULL) {
-        // runs for single command
-
-        char tokens[20][20]; // 2d array allocating 20 tokens
-        char* args[21]; // for 20 tokens and the null pointer
-        tokenize_command(input, tokens, args);
-
-        pid_t pid = fork();
-
-        if (pid < 0) {
-            perror("failed to fork");
-            exit(1);
+            if (line.empty()) {
+                isEmpty = true;
+            }
         }
-        else if (pid == 0) { //  this is now the child process -- never returns if successful
-            execvp(args[0], args);
-            perror("failed to exec");
-            exit(1);
+
+
+        char input[500]; // char for the input characters
+        strncpy(input, line.c_str(), 499); // copies the string into the char array
+        input[499] = '\0';
+
+        char* commands[10];
+
+        if (commands[1] == NULL) {
+            // runs for single command
+
+            char tokens[20][20]; // 2d array allocating 20 tokens
+            char* args[21]; // for 20 tokens and the null pointer
+            tokenize_command(input, tokens, args);
+
+            pid_t pid = fork();
+
+            if (pid < 0) {
+                perror("failed to fork");
+                exit(1);
+            }
+            else if (pid == 0) { //  this is now the process -- never returns if successful
+                execvp(args[0], args);
+                perror("failed to exec");
+                exit(1);
+            }
+            else {
+                // this is the parent process's action
+                int status;
+                waitpid(pid, &status, 0); // prevents zombie process
+                cout << "process " << pid << "exits with exit status value " << WEXITSTATUS(status) << endl;
+                // WEXITSTATUS(status) gives the actual return code from the process
+            }
         }
+
         else {
-            // this is the parent process's action
-            int status;
-            waitpid(pid, &status, 0); // prevents zombie process
-            cout << "child process " << pid << "exited with status " << WEXITSTATUS(status) << endl;
-            // WEXITSTATUS(status) gives the actual return code from the child process
+            execute_pipeline(commands, 10);
         }
-    }
 
-    else {
-        execute_pipeline(commands, 10);
+        return 0;
     }
-
-    return 0;
 }

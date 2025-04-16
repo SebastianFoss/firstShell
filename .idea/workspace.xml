@@ -29,8 +29,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27acdaa7-2ab4-462b-b44a-66a700fecc83" name="Changes" comment="Full implementation of 3+ commands support for pipelining. Creation of modular pipeline creator with arbitrary number of commands support.">
+    <list default="true" id="27acdaa7-2ab4-462b-b44a-66a700fecc83" name="Changes" comment="Removed redundant 2 command code, since it had errors.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myShell.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/myShell.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +107,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744688810340</updated>
       <workItem from="1744688811418" duration="1244000" />
-      <workItem from="1744771719339" duration="8067000" />
+      <workItem from="1744771719339" duration="9270000" />
     </task>
     <task id="LOCAL-00001" summary="Added the initial input system and c string system. Partially complete.">
       <option name="closed" value="true" />
@@ -156,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744778952617</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Removed redundant 2 command code, since it had errors.">
+      <option name="closed" value="true" />
+      <created>1744780005438</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1744780005438</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +189,7 @@
     <MESSAGE value="Full implementation of 2 command support." />
     <MESSAGE value="Partial implementation of 3+ commands." />
     <MESSAGE value="Full implementation of 3+ commands support for pipelining. Creation of modular pipeline creator with arbitrary number of commands support." />
-    <option name="LAST_COMMIT_MESSAGE" value="Full implementation of 3+ commands support for pipelining. Creation of modular pipeline creator with arbitrary number of commands support." />
+    <MESSAGE value="Removed redundant 2 command code, since it had errors." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed redundant 2 command code, since it had errors." />
   </component>
 </project>
