@@ -96,9 +96,7 @@ void execute_pipeline(char* commands[], int num_commands) {
 int main() {
     while (true) {
         string line;
-        if (line == "exit") {
-            break;
-        }
+
         bool isEmpty = false;
         while (!isEmpty) {
             cout << "myshell$" << flush; // display myshell
@@ -110,6 +108,9 @@ int main() {
 
             if (line.empty()) {
                 isEmpty = true;
+            }
+            else if (line == "exit") {
+                break;
             }
         }
 
