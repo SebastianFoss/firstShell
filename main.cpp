@@ -1,20 +1,58 @@
 #include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <cstring>
 
+
+using namespace std;
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the
-    // <b>lang</b> variable name to see how CLion can help you rename it.
-    std::cout << "Hello and welcome to my very first shell!\n";
-    std::cout << "firstShell$";
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code.
-        // We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/>
-        // breakpoint for you, but you can always add more by pressing
-        // <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
+    string line;
+    bool isEmpty = false;
+    while (!isEmpty) {
+        cout << "myshell$" << flush; // display myshell
+
+        getline(cin, line);
+
+        string trimmed = line; //
+        trimmed.erase(remove_if(trimmed.begin(), trimmed.end(), ::isspace), trimmed.end());
+
+        if (line.empty()) {
+            isEmpty = true;
+        }
     }
+
+
+    char input[500];
+
+    strcpy(input, line.c_str());
+
+    char tokens[20][20];
+
+    char* args[21]; // for 20 tokens and the null pointer
+
+    char* token = strtok(input, " ");
+
+    int counter = 0;
+
+    while (token != NULL && counter < 20) {
+        strcpy(tokens[counter], token);
+        args[counter] = tokens[counter];
+        counter++;
+        token = strtok(NULL, " ");
+    }
+
+
+    // wait for command
+
+    // std::string, read the input line into this
+
+    // validate that the input isn't empty
+
+    //
 
     return 0;
 }

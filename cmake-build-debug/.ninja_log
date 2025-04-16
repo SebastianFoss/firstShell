@@ -1,13 +1,6 @@
 # ninja log v6
-1	57	1744659169898263787	CMakeFiles/firstShell.dir/main.cpp.o.ddi	46d61b5ea33b8f34
-57	59	1744659169954264017	CMakeFiles/firstShell.dir/CXX.dd	6b2738d88a10fd6f
-57	59	1744659169954264017	/home/sailsec/CLionProjects/firstShell/cmake-build-debug/CMakeFiles/firstShell.dir/CXXModules.json	6b2738d88a10fd6f
-57	59	1744659169954264017	CMakeFiles/firstShell.dir/main.cpp.o.modmap	6b2738d88a10fd6f
-59	328	1744659169954264017	CMakeFiles/firstShell.dir/main.cpp.o	ea1a4d7f152bf35a
-328	363	1744659170222265117	firstShell	67b29cd288a9a0ad
 1	44	1744659232894522564	CMakeFiles/firstShell.dir/main.cpp.o.ddi	46d61b5ea33b8f34
 44	47	1744659232938522745	CMakeFiles/firstShell.dir/CXX.dd	6b2738d88a10fd6f
-44	47	1744659232938522745	/home/sailsec/CLionProjects/firstShell/cmake-build-debug/CMakeFiles/firstShell.dir/CXXModules.json	6b2738d88a10fd6f
 44	47	1744659232938522745	CMakeFiles/firstShell.dir/main.cpp.o.modmap	6b2738d88a10fd6f
 47	259	1744659232938522745	CMakeFiles/firstShell.dir/main.cpp.o	ea1a4d7f152bf35a
 259	302	1744659233150523616	firstShell	67b29cd288a9a0ad
