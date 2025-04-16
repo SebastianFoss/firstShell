@@ -29,7 +29,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27acdaa7-2ab4-462b-b44a-66a700fecc83" name="Changes" comment="Added the initial input system and c string system. Partially complete.">
+    <list default="true" id="27acdaa7-2ab4-462b-b44a-66a700fecc83" name="Changes" comment="Finished the code for a single command. &#10;Fork, execvp, and wait are used.&#10;Included necessary header files.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +100,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744688810340</updated>
       <workItem from="1744688811418" duration="1244000" />
-      <workItem from="1744771719339" duration="3457000" />
+      <workItem from="1744771719339" duration="4588000" />
     </task>
     <task id="LOCAL-00001" summary="Added the initial input system and c string system. Partially complete.">
       <option name="closed" value="true" />
@@ -109,14 +110,34 @@
       <option name="project" value="LOCAL" />
       <updated>1744774423241</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Finished the code for a single command. &#10;Fork, execvp, and wait are used.&#10;Included necessary header files.">
+      <option name="closed" value="true" />
+      <created>1744775569117</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1744775569117</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added the initial input system and c string system. Partially complete." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the initial input system and c string system. Partially complete." />
+    <MESSAGE value="Finished the code for a single command. &#10;Fork, execvp, and wait are used.&#10;Included necessary header files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished the code for a single command. &#10;Fork, execvp, and wait are used.&#10;Included necessary header files." />
   </component>
 </project>
